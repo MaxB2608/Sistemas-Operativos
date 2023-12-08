@@ -1,0 +1,31 @@
+all: classes runSopa runSopaForks runSopaThreads clean
+
+JFLAGS = -g
+JC = javac
+JVM = java
+
+.SUFFIXES: .java .class
+
+.java.class: 
+	$(JC) $(JFLAGS) $*.java
+
+CLASSES = \
+	Sopa.java \
+	SopaForks.java \
+	SopaThreads.java
+
+default: classes
+
+classes: $(CLASSES:.java=.class)
+
+runSopa: Sopa.class
+	$(JVM) Sopa
+
+runSopaForks: SopaForks.class
+	$(JVM) SopaForks
+
+runSopaThreads: SopaThreads.class
+	$(JVM) SopaThreads
+
+clean: 
+	$(RM) *.class
