@@ -1,0 +1,11 @@
+CC = gcc
+CFLAGS = -w
+
+all: Magic_maze
+
+Magic_maze: mm.c
+	$(CC) $(CFLAGS) -o programa mm.c
+	./programa
+
+clean:
+	rm -f programa
